@@ -70,5 +70,11 @@ To create a SudokuSolver object and solve a sudoku, you can do the following
 	}
 ```
 
+A square object's value can be retrieved, for example, by 
+
+```java
+Square firstSquare = solvedSquares.get(0);
+int firstValue = firstSquare.getValue();
+```
 
 [Sudoku]: http://en.wikipedia.org/wiki/Sudoku
