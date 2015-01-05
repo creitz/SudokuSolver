@@ -93,7 +93,7 @@ To create a SudokuSolver object and solve a sudoku, you can do the following
 		*/
 		
 	} else {
-		System.out.println("Board has multiple solutions or no solution.");
+		System.out.println("Board does not have a unique solution.");
 	}
 ```
 
@@ -121,7 +121,7 @@ So, for example, to retrieve the value of the middle square in the top right
 quadrant, you could do:
 
 ```java
-solutionGrid.getValueAtLocation(1, 8);
+solutionGrid.getValueAtLocation(1, 7);
 ```
 
 or:
