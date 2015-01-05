@@ -74,7 +74,7 @@ D****CB*62G7****
 
 ```
 
-For grid sizes larger than 10 
+For grid sizes larger than 9x9, the integers must be single-digit (i.e. use hex for 16x16).
 
 ## Using the Components
 
