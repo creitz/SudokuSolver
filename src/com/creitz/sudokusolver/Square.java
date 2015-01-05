@@ -5,12 +5,12 @@ import java.util.HashSet;
 //Charles Reitz
 //1/4/15
 
-//A container object to represent a square in the sudoku board. Useful for disallowing
-//modification of a square's value if the value was pre-specified in the input file.
+//A container object to represent a square in the sudoku board. 
 
 public class Square {
 
 	private HashSet<Integer> possibleValues = new HashSet<>();
+	public static final String EMPTY_SQUARE_INDICATOR = "*";
 	
 	//the integer value of the square
 	private int value = -1;
@@ -24,7 +24,7 @@ public class Square {
 		initialize(gridSize);
 		
 		//Set isModifiable to true if s is a *, otherwise set the value
-		if (!s.equals("*")) {
+		if (!s.equals(EMPTY_SQUARE_INDICATOR)) {
 			value = Integer.valueOf(s);
 			removeAllPossibilities();
 		}

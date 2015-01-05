@@ -39,7 +39,7 @@ public class SudokuSolver {
 			System.out.println("Solution board: ");
 			solver.print();
 		} else {
-			System.out.println("Board does not have a unique solution.");
+			System.out.println("Board does not have a unique solution.\n");
 		}
 	}
 }

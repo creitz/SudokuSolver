@@ -423,7 +423,6 @@ public class Grid {
 	 * Prints the state of the grid
 	 */
 	public void print() {
-		System.out.println();
 		
 		for (int i=0; i < squares.size(); i++) {
 			
@@ -434,7 +433,7 @@ public class Grid {
 			if (s.hasValue()) {
 				System.out.print(s.getValue());
 			} else {
-				System.out.print("*");
+				System.out.print(Square.EMPTY_SQUARE_INDICATOR);
 			}
 
 		}
