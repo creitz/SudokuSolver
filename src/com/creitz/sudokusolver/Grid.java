@@ -28,6 +28,10 @@ public class Grid {
 		erasePossibilitiesFromFilledNumbers();
 	}
 	
+	public ArrayList<Square> getSquares() {
+		return squares;
+	}
+	
 	public boolean fillAnyEmptySquare() {
 		if (fillDefinite()) {
 			return true;

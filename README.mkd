@@ -53,6 +53,22 @@ file could containing the following:
 
 ## Using the components
 
+To create a SudokuSolver object and solve a sudoku, you can do the following
+
+```
+	SudokuSolver solver = new SudokuSolver("filename");
+	if (solver.solve()) {
+		Grid solutionGrid = solver.getGrid();
+		ArrayList<Square> solvedSquares = solutionGrid.getSquares();
+		
+		/*
+		* Do whatever you'd like with the squares
+		*/
+		
+	} else {
+		System.out.println("Board has multiple solutions or no solution.");
+	}
+```
 
 
 [Sudoku]: http://en.wikipedia.org/wiki/Sudoku
