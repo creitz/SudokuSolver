@@ -25,7 +25,7 @@ public class Square {
 		
 		//Set isModifiable to true if s is a *, otherwise set the value
 		if (!s.equals(EMPTY_SQUARE_INDICATOR)) {
-			value = Integer.valueOf(s);
+			value = Integer.valueOf(s, gridSize+1);
 			removeAllPossibilities();
 		}
 	}

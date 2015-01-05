@@ -431,7 +431,7 @@ public class Grid {
 			}
 			Square s = squares.get(i);
 			if (s.hasValue()) {
-				System.out.print(s.getValue());
+				System.out.print(Integer.toString(s.getValue(), gridSize + 1).toUpperCase());
 			} else {
 				System.out.print(Square.EMPTY_SQUARE_INDICATOR);
 			}
