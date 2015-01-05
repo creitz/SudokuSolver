@@ -5,7 +5,7 @@ Simple command line utility and java components for solving 4- or 9-[Sudoku][] p
 
 ## Downloading
 
-To download you must clone the source from GitHub:
+To download, you can clone the source from GitHub:
 
     $ git clone git@github.com:creitz/SudokuSolver.git
     $ cd SudokuSolver
