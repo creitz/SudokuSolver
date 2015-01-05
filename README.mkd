@@ -39,8 +39,9 @@ The solver excepts a board formatted as such:
 ***2***6*
 ```
 
-The asterisks indicate an empty square in the board, and the numbers are the values for filled squares.
-The 9 indicates that the board will be a 9x9.  If you wish to solve a 4x4, the file could containing the following:
+The *'s indicate an empty square in the board, and the numbers are the values for filled squares.
+The 9 on the first line indicates that the board will be a 9x9.  If you wish to solve a 4x4, the 
+file could containing the following:
 
 ```
 4
