@@ -1,7 +1,7 @@
 SudokuSolver
 =========================
 
-Simple command line utility and java components for solving 4- or 9-[Sudoku][] puzzles.
+Simple command line utility and java components for solving 4-, or 9-, 16-, or 25-[Sudoku][] puzzles.
 
 ## Downloading
 
@@ -50,6 +50,31 @@ file could containing the following:
 ****
 13*2
 ```
+
+Or for a 16x16:
+
+```
+16
+****D*C*3*5**81A
+1*F49*GEDC**6**3
+*D*5***A*9*27C**
+8****F2**16***4*
+*4*********52**E
+**16****FD*E**GC
+*C*****8*3*41*7*
+***F*31*G**A*48B
+******8G*4*1*E**
+*F***69*A5B**GC1
+*B9*****8****237
+D****CB*62G7****
+*AC**D3*4*F*G**5
+2*4***71***6**ED
+***389**1G2BCA**
+**G1CB**5E**379*
+
+```
+
+For grid sizes larger than 10 
 
 ## Using the Components
 
