@@ -51,7 +51,7 @@ file could containing the following:
 13*2
 ```
 
-## Using the components
+## Using the Components
 
 To create a SudokuSolver object and solve a sudoku, you can do the following
 
