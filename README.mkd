@@ -3,9 +3,9 @@ SudokuSolver
 
 Simple command line utility and java components for solving 4- or 9-[Sudoku][] puzzles.
 
-## Installation
+## Downloading
 
-To install you must clone the source from GitHub:
+To download you must clone the source from GitHub:
 
     $ git clone git@github.com:creitz/SudokuSolver.git
     $ cd SudokuSolver
