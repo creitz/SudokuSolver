@@ -26,6 +26,7 @@ Once in the cloned directory, run the following commands to create a bin/ direct
 The /path/to/file should be replaced by the path to the file containing a sudoku board you wish to solve.
 The solver excepts a board formatted as such:
 
+```
 9
 *3***7***
 2***56*1*
@@ -36,15 +37,18 @@ The solver excepts a board formatted as such:
 ****41***
 *2*83***7
 ***2***6*
+```
 
 The asterisks indicate an empty square in the board, and the numbers are the values for filled squares.
 The 9 indicates that the board will be a 9x9.  If you wish to solve a 4x4, the file could containing the following:
 
+```
 4
 3*1*
 *12*
 ****
-13*2 
+13*2
+```
 
 ## Using the components
 
