@@ -306,10 +306,8 @@ public class Grid {
 	 */
 	private ArrayList<Integer> incidentalInBox(int pos) {
 		
-		//create a new array
 		ArrayList<Integer> inBox = new ArrayList<Integer>();
 		
-		//get the position of the top left of the box
 		int topLeftOfBox = topLeftOfBox(pos);
 		
 		//get the dimensions of the box
@@ -319,14 +317,10 @@ public class Grid {
 		int startColumn = getColumn(topLeftOfBox);
 		int startRow = getRow(topLeftOfBox);
 		
-		//iterate through all of the positions in the box, adding them
-		//to the list if they are not equal to pos
 		for (int col=startColumn; col < startColumn + sqrtSize; col++) {
 			for (int row = startRow; row < startRow + sqrtSize; row++) {
 				int thisPos = convertToPos(row, col);
-				//if (thisPos != pos) {
-					inBox.add(thisPos);
-				//}
+				inBox.add(thisPos);
 			}
 		}	
 		
@@ -377,9 +371,7 @@ public class Grid {
 		//descend down the column and add each position to the array
 		int column = getColumn(pos);
 		for (int i=column; i < gridSize * gridSize; i += gridSize) {
-			//if (i != pos) {
-				incidents.add(i);
-			//}
+			incidents.add(i);
 		}
 		
 		return incidents;
@@ -397,9 +389,7 @@ public class Grid {
 		int row = getRow(pos);
 		int startPos = convertToPos(row, 0);
 		for (int i = startPos; i < startPos + gridSize; i++) {
-			//if (i != pos) {
-				incidents.add(i);
-			//}			
+			incidents.add(i);
 		}
 		
 		return incidents;

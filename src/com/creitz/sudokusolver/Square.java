@@ -23,7 +23,6 @@ public class Square {
 		
 		initialize(gridSize);
 		
-		//Set isModifiable to true if s is a *, otherwise set the value
 		if (!s.equals(EMPTY_SQUARE_INDICATOR)) {
 			value = Integer.valueOf(s, gridSize+1);
 			removeAllPossibilities();
