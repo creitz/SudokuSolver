@@ -24,7 +24,7 @@ Once in the cloned directory, run the following commands to create a bin/ direct
 	$ java com/creitz/sudokusolver/SudokuSolver /path/to/file
 	
 The /path/to/file should be replaced by the path to the file containing a sudoku board you wish to solve.
-The solver excepts a board formatted as such:
+The solver expects a board formatted as such:
 
 ```
 9
