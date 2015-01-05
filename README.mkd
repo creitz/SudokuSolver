@@ -1,0 +1,18 @@
+SudokuSolver
+=========================
+
+Simple command line utility and java components for solving 4- or 9-[Sudoku][] puzzles.
+
+## Compiling
+
+
+
+## Running from command line
+
+cd into the 
+
+## Using the components
+
+
+
+[Sudoku]: http://en.wikipedia.org/wiki/Sudoku
