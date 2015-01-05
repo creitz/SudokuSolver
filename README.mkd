@@ -77,4 +77,10 @@ Square firstSquare = solvedSquares.get(0);
 int firstValue = firstSquare.getValue();
 ```
 
+Alternatively, you can query for the value at a given coordinate
+
+```java
+solutionGrid.getValueAtLocation(0, 0);
+```
+
 [Sudoku]: http://en.wikipedia.org/wiki/Sudoku

@@ -32,6 +32,17 @@ public class Grid {
 		return squares;
 	}
 	
+	/**
+	 * Returns the value in the square at the given <code>row</code> and <code>col</code>.
+	 * The top left square is row 0, column 0.
+	 * @param row
+	 * @param col
+	 * @return
+	 */
+	public int getValueAtLocation(int row, int col) {
+		return squares.get(convertToPos(row, col)).getValue();
+	}
+	
 	public boolean fillAnyEmptySquare() {
 		if (fillDefinite()) {
 			return true;
