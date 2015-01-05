@@ -83,4 +83,25 @@ Alternatively, you can query for the value at a given coordinate
 solutionGrid.getValueAtLocation(0, 0);
 ```
 
+The top row is row 0, beneath that is row 1, then row 2, etc.
+The left-most column is column 0, then column 1, etc.
+The ArrayList of squares that is returned by ```getSquares()``` is a wrapped
+ArrayList, so the first 9 elements are the squares in the top row, then 
+the next 9 elements are, from left to right, the squares in the next row
+from the top.  
+
+So, for example, to retrieve the value of the middle square in the top right 
+quadrant, you could do:
+
+```java
+solutionGrid.getValueAtLocation(1, 8);
+```
+
+or:
+
+```java
+solvedSquares.get(16);
+```
+
+
 [Sudoku]: http://en.wikipedia.org/wiki/Sudoku
