@@ -97,6 +97,23 @@ To create a SudokuSolver object and solve a sudoku, you can do the following
 	}
 ```
 
+Alternatively, you can create a grid programmatically instead of with a file, like so:
+
+```java
+Grid grid = new Grid(gridSize);
+for (int row = 0; row < gridSize; row++) {
+		for (int col = 0; col < gridSize; col++) {
+			if (squareShouldHaveAValue) {
+				grid.setValueAtCoords(row, col, someValue);
+			}
+		}
+	} 
+}
+SudokuSolver solver = new SudokuSolver(grid);
+solver.solve();
+solver.getGrid();
+```
+
 A square object's value can be retrieved, for example, by 
 
 ```java
