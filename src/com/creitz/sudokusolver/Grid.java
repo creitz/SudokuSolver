@@ -20,12 +20,30 @@ public class Grid {
 		try {
 	        myFile = new BufferedReader(new FileReader(file));
 	    } catch (Exception e) {
-	    	System.err.println("Ooops!  I can't seem to read the file on the standard input!");
+	    	System.err.println("Ooops!  I can't seem to read the file!");
 	        System.exit(1);
 	    }
 		
 		readSquares(myFile);
+		finalize();
+	}
+	
+	public Grid(int grSize) {
+		gridSize = grSize;
+		
+		int numSquares = gridSize * gridSize;
+		for (int i=0; i < numSquares; i++) {
+			squares.add(new Square(gridSize));
+		}
+	}
+	
+	public void finalize() {
 		erasePossibilitiesFromFilledNumbers();
+	}
+	
+	public void setValueAtCoords(int row, int column, int value) {
+		int squarePos = convertToPos(row, column);
+		squares.get(squarePos).setValue(value);
 	}
 	
 	public ArrayList<Square> getSquares() {
@@ -57,6 +75,44 @@ public class Grid {
 		return false;
 	}
 	
+	/**
+	 * Checks if there are still squares without a value
+	 * @return true if there is at least one empty square; false otherwise
+	 */
+	public boolean hasEmpty() {
+		
+		for (int i=0; i < squares.size(); i++) {
+			Square s = squares.get(i);
+			if (!s.hasValue()) {
+				return true;
+			}
+		}
+		
+		return false;
+	}
+	
+	/**
+	 * Prints the state of the grid
+	 */
+	public void print() {
+		
+		for (int i=0; i < squares.size(); i++) {
+			
+			if (i % gridSize == 0) {
+				System.out.println();
+			}
+			Square s = squares.get(i);
+			if (s.hasValue()) {
+				System.out.print(Integer.toString(s.getValue(), gridSize + 1).toUpperCase());
+			} else {
+				System.out.print(Square.EMPTY_SQUARE_INDICATOR);
+			}
+
+		}
+		System.out.println("\n");
+	}
+	
+
 	/**
 	 * Loops through all squares until an empty square with only one possible value is
 	 * found, or the squares are exhausted.  If found, the square's value is set to
@@ -218,7 +274,7 @@ public class Grid {
 	 * Erase affected squares' possibilities from each square 
 	 * that has a value
 	 */
-	public void erasePossibilitiesFromFilledNumbers() {
+	private void erasePossibilitiesFromFilledNumbers() {
 		for (int i = 0; i < squares.size(); i++) {
 			Square s = squares.get(i);
 			if (s.hasValue()) {
@@ -282,22 +338,6 @@ public class Grid {
 			Square s = squares.get(pos);
 			s.removePossibility(value);
 		}
-	}
-	
-	/**
-	 * Checks if there are still squares without a value
-	 * @return true if there is at least one empty square; false otherwise
-	 */
-	public boolean hasEmpty() {
-		
-		for (int i=0; i < squares.size(); i++) {
-			Square s = squares.get(i);
-			if (!s.hasValue()) {
-				return true;
-			}
-		}
-		
-		return false;
 	}
 	
 	/**
@@ -410,27 +450,6 @@ public class Grid {
 	}
 	
 	/**
-	 * Prints the state of the grid
-	 */
-	public void print() {
-		
-		for (int i=0; i < squares.size(); i++) {
-			
-			if (i % gridSize == 0) {
-				System.out.println();
-			}
-			Square s = squares.get(i);
-			if (s.hasValue()) {
-				System.out.print(Integer.toString(s.getValue(), gridSize + 1).toUpperCase());
-			} else {
-				System.out.print(Square.EMPTY_SQUARE_INDICATOR);
-			}
-
-		}
-		System.out.println("\n");
-	}
-	
-	/**
 	 * Read from the given <code>file</code> and populate the vector
 	 * representation based on its contents.
 	 */
@@ -460,7 +479,11 @@ public class Grid {
 	private void readLine(String line) {
 		
 		for (int i=0; i < gridSize; i++) {
-			Square square = new Square(String.valueOf(line.charAt(i)), gridSize);
+			Square square = new Square(gridSize);
+			String indicator = String.valueOf(line.charAt(i));
+			if (!indicator.equals(Square.EMPTY_SQUARE_INDICATOR)) {
+				square.setValue(Integer.valueOf(indicator, gridSize+1));
+			}
 			squares.add(square);
 		}
 	}	

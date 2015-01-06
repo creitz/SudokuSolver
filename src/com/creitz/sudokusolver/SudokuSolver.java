@@ -11,8 +11,13 @@ public class SudokuSolver {
 		mGrid = new Grid(file);
 	}
 	
+	public SudokuSolver(Grid grid) {
+		mGrid = grid;
+	}
+	
 	public boolean solve() {
 		
+		mGrid.finalize();
 		while (mGrid.hasEmpty()) {
 			if (!mGrid.fillAnyEmptySquare()) {
 				break;

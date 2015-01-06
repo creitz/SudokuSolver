@@ -16,17 +16,14 @@ public class Square {
 	private int value = -1;
 	
 	/**
-	 * Creates a new Square from the given <code>s</code>, which must be an integer
-	 * or a *.
+	 * Initialize the square with the given <code>gridSize</code>, NOT
+	 * the value of the square. Use setValue(int) to set the value.
+	 * @param gridSize
 	 */
-	public Square(String s, int gridSize) {
-		
-		initialize(gridSize);
-		
-		if (!s.equals(EMPTY_SQUARE_INDICATOR)) {
-			value = Integer.valueOf(s, gridSize+1);
-			removeAllPossibilities();
-		}
+	public Square(int gridSize) {
+		for (int i=1; i <= gridSize; i++) {
+			possibleValues.add(i);
+		}	
 	}
 	
 	private void removeAllPossibilities() {
@@ -39,13 +36,6 @@ public class Square {
 	
 	public void removePossibility(int i) {
 		possibleValues.remove(i);
-	}
-	
-	private void initialize(int gridSize) {
-		
-		for (int i=1; i <= gridSize; i++) {
-			possibleValues.add(i);
-		}	
 	}
 	
 	/**
