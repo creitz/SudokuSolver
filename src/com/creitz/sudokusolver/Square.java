@@ -9,7 +9,7 @@ import java.util.HashSet;
 
 public class Square {
 
-	private HashSet<Integer> possibleValues = new HashSet<>();
+	private HashSet<Integer> mPossibleValues = new HashSet<>();
 	public static final String EMPTY_SQUARE_INDICATOR = "*";
 	
 	//the integer value of the square
@@ -22,20 +22,20 @@ public class Square {
 	 */
 	public Square(int gridSize) {
 		for (int i=1; i <= gridSize; i++) {
-			possibleValues.add(i);
+			mPossibleValues.add(i);
 		}	
 	}
 	
 	private void removeAllPossibilities() {
-		possibleValues = new HashSet<>();
+		mPossibleValues = new HashSet<>();
 	}
 		
 	public HashSet<Integer> possibleValues() {
-		return possibleValues;
+		return mPossibleValues;
 	}
 	
 	public void removePossibility(int i) {
-		possibleValues.remove(i);
+		mPossibleValues.remove(i);
 	}
 	
 	/**
