@@ -11,8 +11,8 @@ import java.util.HashSet;
 
 public class Grid {
 
-	private ArrayList<Square> squares = new ArrayList<Square>();
-	private int gridSize = -1;
+	private ArrayList<Square> mSquares = new ArrayList<Square>();
+	private int mGridSize = -1;
 	
 	public Grid(String file) {
 		
@@ -29,11 +29,11 @@ public class Grid {
 	}
 	
 	public Grid(int grSize) {
-		gridSize = grSize;
+		mGridSize = grSize;
 		
-		int numSquares = gridSize * gridSize;
+		int numSquares = mGridSize * mGridSize;
 		for (int i=0; i < numSquares; i++) {
-			squares.add(new Square(gridSize));
+			mSquares.add(new Square(mGridSize));
 		}
 	}
 	
@@ -43,11 +43,11 @@ public class Grid {
 	
 	public void setValueAtCoords(int row, int column, int value) {
 		int squarePos = convertToPos(row, column);
-		squares.get(squarePos).setValue(value);
+		mSquares.get(squarePos).setValue(value);
 	}
 	
 	public ArrayList<Square> getSquares() {
-		return squares;
+		return mSquares;
 	}
 	
 	/**
@@ -58,7 +58,7 @@ public class Grid {
 	 * @return
 	 */
 	public int getValueAtLocation(int row, int col) {
-		return squares.get(convertToPos(row, col)).getValue();
+		return mSquares.get(convertToPos(row, col)).getValue();
 	}
 	
 	public boolean fillAnyEmptySquare() {
@@ -81,8 +81,8 @@ public class Grid {
 	 */
 	public boolean hasEmpty() {
 		
-		for (int i=0; i < squares.size(); i++) {
-			Square s = squares.get(i);
+		for (int i=0; i < mSquares.size(); i++) {
+			Square s = mSquares.get(i);
 			if (!s.hasValue()) {
 				return true;
 			}
@@ -96,14 +96,14 @@ public class Grid {
 	 */
 	public void print() {
 		
-		for (int i=0; i < squares.size(); i++) {
+		for (int i=0; i < mSquares.size(); i++) {
 			
-			if (i % gridSize == 0) {
+			if (i % mGridSize == 0) {
 				System.out.println();
 			}
-			Square s = squares.get(i);
+			Square s = mSquares.get(i);
 			if (s.hasValue()) {
-				System.out.print(Integer.toString(s.getValue(), gridSize + 1).toUpperCase());
+				System.out.print(Integer.toString(s.getValue(), mGridSize + 1).toUpperCase());
 			} else {
 				System.out.print(Square.EMPTY_SQUARE_INDICATOR);
 			}
@@ -120,8 +120,8 @@ public class Grid {
 	 * @return true if a value is set; false otherwise
 	 */
 	private boolean fillDefinite() {
-		for (int i=0; i < squares.size(); i++) {
-			Square s = squares.get(i);
+		for (int i=0; i < mSquares.size(); i++) {
+			Square s = mSquares.get(i);
 			if (!s.hasValue() && s.possibleValues().size() == 1) {
 				int value = (int)s.possibleValues().toArray()[0];
 				s.setValue(value);
@@ -140,7 +140,7 @@ public class Grid {
 	 */
 	private boolean fillByLookingAtColumns() {
 		
-		for (int col = 0; col < gridSize; col++) {
+		for (int col = 0; col < mGridSize; col++) {
 			if (findValueInColumn(col)) {
 				return true;
 			}
@@ -156,7 +156,7 @@ public class Grid {
 	 */
 	private boolean fillByLookingAtRows() {
 		
-		for (int row = 0; row < gridSize; row++) {
+		for (int row = 0; row < mGridSize; row++) {
 			if (findValueInRow(row)) {
 				return true;
 			}
@@ -172,10 +172,10 @@ public class Grid {
 	 */
 	private boolean fillByLookingAtBoxes() {
 		
-		int quadrantSize = (int)Math.sqrt(gridSize);
+		int quadrantSize = (int)Math.sqrt(mGridSize);
 		
-		for (int col = 0; col < gridSize; col += quadrantSize) {
-			for (int row = 0; row < gridSize; row += quadrantSize) {
+		for (int col = 0; col < mGridSize; col += quadrantSize) {
+			for (int row = 0; row < mGridSize; row += quadrantSize) {
 				int position = convertToPos(row, col);
 				if (findValueInBox(position)) {
 					return true;
@@ -229,7 +229,7 @@ public class Grid {
 	 */
 	private boolean findValueInSet(ArrayList<Integer> poses) {
 		for (int pos : poses) {
-			Square s = squares.get(pos);
+			Square s = mSquares.get(pos);
 			if (!s.hasValue()) {
 				ArrayList<Integer> possibleValues = new ArrayList<>(s.possibleValues());
 				for (int value : possibleValues) {
@@ -262,7 +262,7 @@ public class Grid {
 		
 		for (int pos : poses) {
 			if (pos != noLookPos) {
-				Square s = squares.get(pos);
+				Square s = mSquares.get(pos);
 				otherValues.addAll(s.possibleValues());
 			}
 		}
@@ -275,8 +275,8 @@ public class Grid {
 	 * that has a value
 	 */
 	private void erasePossibilitiesFromFilledNumbers() {
-		for (int i = 0; i < squares.size(); i++) {
-			Square s = squares.get(i);
+		for (int i = 0; i < mSquares.size(); i++) {
+			Square s = mSquares.get(i);
 			if (s.hasValue()) {
 				int value = s.getValue();
 				eraseEach(i, value);
@@ -335,7 +335,7 @@ public class Grid {
 		
 		for (int i = 0; i < poses.size(); i++) {
 			int pos = poses.get(i);
-			Square s = squares.get(pos);
+			Square s = mSquares.get(pos);
 			s.removePossibility(value);
 		}
 	}
@@ -351,7 +351,7 @@ public class Grid {
 		int topLeftOfBox = topLeftOfBox(pos);
 		
 		//get the dimensions of the box
-		int sqrtSize = (int)Math.sqrt(gridSize);
+		int sqrtSize = (int)Math.sqrt(mGridSize);
 		
 		//get the corresponding row and columns of the top left of the box
 		int startColumn = getColumn(topLeftOfBox);
@@ -372,7 +372,7 @@ public class Grid {
 	 * in the vector representation.
 	 */
 	private int convertToPos(int row, int col) {
-		return col + gridSize * row;
+		return col + mGridSize * row;
 	}
 	
 	/**
@@ -386,7 +386,7 @@ public class Grid {
 		int columnOfPos = getColumn(pos);
 		
 		//get the dimensions of the box
-		int quadrantSize = (int)Math.sqrt(gridSize);
+		int quadrantSize = (int)Math.sqrt(mGridSize);
 		
 		//use integer division to truncate and get the left/top most box
 		int horizontalBoxNumber = columnOfPos / quadrantSize;
@@ -410,7 +410,7 @@ public class Grid {
 		
 		//descend down the column and add each position to the array
 		int column = getColumn(pos);
-		for (int i=column; i < gridSize * gridSize; i += gridSize) {
+		for (int i=column; i < mGridSize * mGridSize; i += mGridSize) {
 			incidents.add(i);
 		}
 		
@@ -428,7 +428,7 @@ public class Grid {
 		//traverse the row and add each position to the array
 		int row = getRow(pos);
 		int startPos = convertToPos(row, 0);
-		for (int i = startPos; i < startPos + gridSize; i++) {
+		for (int i = startPos; i < startPos + mGridSize; i++) {
 			incidents.add(i);
 		}
 		
@@ -439,14 +439,14 @@ public class Grid {
 	 * Get the row of the given <code>pos</code>
 	 */
 	private int getRow(int pos) {
-		return pos / gridSize;
+		return pos / mGridSize;
 	}
 	
 	/**
 	 * Get the column of the given <code>pos</code>
 	 */
 	private int getColumn(int pos) {
-		return pos % gridSize;
+		return pos % mGridSize;
 	}
 	
 	/**
@@ -457,13 +457,13 @@ public class Grid {
 		
 		//Read the gridSize (width)
 		try {
-			gridSize = Integer.valueOf(file.readLine());
+			mGridSize = Integer.valueOf(file.readLine());
 		} catch (Exception e) {
 			e.printStackTrace();
 		} 
 		
 		//Read a gridSize # of lines
-		for (int i=0; i < gridSize; i++) {
+		for (int i=0; i < mGridSize; i++) {
 			try {
 				readLine(file.readLine());
 			} catch (Exception e) {
@@ -478,13 +478,13 @@ public class Grid {
 	 */
 	private void readLine(String line) {
 		
-		for (int i=0; i < gridSize; i++) {
-			Square square = new Square(gridSize);
+		for (int i=0; i < mGridSize; i++) {
+			Square square = new Square(mGridSize);
 			String indicator = String.valueOf(line.charAt(i));
 			if (!indicator.equals(Square.EMPTY_SQUARE_INDICATOR)) {
-				square.setValue(Integer.valueOf(indicator, gridSize+1));
+				square.setValue(Integer.valueOf(indicator, mGridSize+1));
 			}
-			squares.add(square);
+			mSquares.add(square);
 		}
 	}	
 	
@@ -493,13 +493,13 @@ public class Grid {
 		
 		Grid state = (Grid)o;
 		
-		if (gridSize != state.gridSize || squares.size() != state.squares.size()) {
+		if (mGridSize != state.mGridSize || mSquares.size() != state.mSquares.size()) {
 			return false;
 		}
 		
-		for (int i = 0; i < squares.size(); i++) {
+		for (int i = 0; i < mSquares.size(); i++) {
 			
-			if (squares.get(i).getValue() != state.squares.get(i).getValue()) {
+			if (mSquares.get(i).getValue() != state.mSquares.get(i).getValue()) {
 				return false;
 			}
 			
