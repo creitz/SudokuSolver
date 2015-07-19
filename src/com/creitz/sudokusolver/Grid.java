@@ -58,7 +58,8 @@ public class Grid {
 	 * @return
 	 */
 	public int getValueAtLocation(int row, int col) {
-		return mSquares.get(convertToPos(row, col)).getValue();
+		int squarePos = convertToPos(row, col);
+		return mSquares.get(squarePos).getValue();
 	}
 	
 	public boolean fillAnyEmptySquare() {
@@ -81,8 +82,7 @@ public class Grid {
 	 */
 	public boolean hasEmpty() {
 		
-		for (int i=0; i < mSquares.size(); i++) {
-			Square s = mSquares.get(i);
+		for (Square s : mSquares) {
 			if (!s.hasValue()) {
 				return true;
 			}
@@ -96,18 +96,26 @@ public class Grid {
 	 */
 	public void print() {
 		
+		int blockSize = 3;
+		
 		for (int i=0; i < mSquares.size(); i++) {
 			
 			if (i % mGridSize == 0) {
 				System.out.println();
 			}
 			Square s = mSquares.get(i);
+			String singleOutput;
 			if (s.hasValue()) {
-				System.out.print(Integer.toString(s.getValue(), mGridSize + 1).toUpperCase());
+				singleOutput = Integer.toString(s.getValue()) + " ";
 			} else {
-				System.out.print(Square.EMPTY_SQUARE_INDICATOR);
+				singleOutput = Square.EMPTY_SQUARE_INDICATOR + " ";
 			}
-
+			
+			System.out.print(singleOutput);
+			
+			for (int pos=singleOutput.length(); pos <= blockSize; pos++) {
+				System.out.print(" ");
+			}
 		}
 		System.out.println("\n");
 	}
@@ -122,8 +130,8 @@ public class Grid {
 	private boolean fillDefinite() {
 		for (int i=0; i < mSquares.size(); i++) {
 			Square s = mSquares.get(i);
-			if (!s.hasValue() && s.possibleValues().size() == 1) {
-				int value = (int)s.possibleValues().toArray()[0];
+			if (!s.hasValue() && s.getPossibleValues().size() == 1) {
+				int value = (int)s.getPossibleValues().toArray()[0];
 				s.setValue(value);
 				eraseEach(i, value);
 				return true;
@@ -231,7 +239,7 @@ public class Grid {
 		for (int pos : poses) {
 			Square s = mSquares.get(pos);
 			if (!s.hasValue()) {
-				ArrayList<Integer> possibleValues = new ArrayList<>(s.possibleValues());
+				ArrayList<Integer> possibleValues = new ArrayList<>(s.getPossibleValues());
 				for (int value : possibleValues) {
 					if (isOnly(value, poses, pos)) {
 						s.setValue(value);
@@ -263,7 +271,7 @@ public class Grid {
 		for (int pos : poses) {
 			if (pos != noLookPos) {
 				Square s = mSquares.get(pos);
-				otherValues.addAll(s.possibleValues());
+				otherValues.addAll(s.getPossibleValues());
 			}
 		}
 		
@@ -478,11 +486,17 @@ public class Grid {
 	 */
 	private void readLine(String line) {
 		
-		for (int i=0; i < mGridSize; i++) {
+		String[] chunks = line.split(" ");
+		
+		for (String chunk : chunks) {
+			
+			if (chunk.isEmpty() || chunk.equals(" ")) {
+				continue;
+			}
+			
 			Square square = new Square(mGridSize);
-			String indicator = String.valueOf(line.charAt(i));
-			if (!indicator.equals(Square.EMPTY_SQUARE_INDICATOR)) {
-				square.setValue(Integer.valueOf(indicator, mGridSize+1));
+			if (!chunk.equals(Square.EMPTY_SQUARE_INDICATOR)) {
+				square.setValue(Integer.valueOf(chunk));
 			}
 			mSquares.add(square);
 		}

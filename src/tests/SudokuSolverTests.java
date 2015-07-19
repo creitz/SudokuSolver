@@ -60,6 +60,14 @@ public class SudokuSolverTests {
 	}
 	
 	@Test
+	public void sixteenGridTest1() {
+		Grid solutionGrid = new Grid("testfiles/16testfile1sol");
+		SudokuSolver solver = new SudokuSolver("testfiles/16testfile1");
+		solver.solve();
+		assertEquals(solutionGrid, solver.getGrid());
+	}
+	
+	@Test
 	public void manualGridtest() {
 
 		BufferedReader file = null;
@@ -84,11 +92,19 @@ public class SudokuSolverTests {
 			for (int row = 0; row < gridSize; row++) {
 				try {
 					String line = file.readLine();
-					for (int col = 0; col < gridSize; col++) {
-						String indicator = String.valueOf(line.charAt(col));
+					int col = 0;
+					for (int pos = 0; pos < line.length(); pos++) {
+						
+						String indicator = String.valueOf(line.charAt(pos));
+						if (indicator.equals(" ")) {
+							continue;
+						}
+						
 						if (!indicator.equals(Square.EMPTY_SQUARE_INDICATOR)) {
 							newGrid.setValueAtCoords(row, col, Integer.valueOf(indicator));
-						}
+						}	
+						
+						col++;
 					}
 				} catch (Exception e) {
 					e.printStackTrace();

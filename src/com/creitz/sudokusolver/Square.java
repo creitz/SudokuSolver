@@ -30,7 +30,7 @@ public class Square {
 		mPossibleValues = new HashSet<>();
 	}
 		
-	public HashSet<Integer> possibleValues() {
+	public HashSet<Integer> getPossibleValues() {
 		return mPossibleValues;
 	}
 	
