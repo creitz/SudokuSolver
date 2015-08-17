@@ -68,6 +68,14 @@ public class SudokuSolverTests {
 	}
 	
 	@Test
+	public void twentyFiveGridTest1() {
+		Grid solutionGrid = new Grid("testfiles/25testfile1sol");
+		SudokuSolver solver = new SudokuSolver("testfiles/25testfile1");
+		solver.solve();
+		assertEquals(solutionGrid, solver.getGrid());
+	}
+	
+	@Test
 	public void manualGridtest() {
 
 		BufferedReader file = null;
