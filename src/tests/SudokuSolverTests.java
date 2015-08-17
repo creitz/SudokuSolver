@@ -10,69 +10,67 @@ import com.creitz.sudokusolver.*;
 
 public class SudokuSolverTests {
 
+	private void check(String testFile, String solutionFile) {
+		Grid solutionGrid = new Grid(solutionFile);
+		SudokuSolver solver = new SudokuSolver(testFile);
+		solver.solve();
+		assertEquals(solutionGrid, solver.getGrid());
+	}
 	
 	@Test
 	public void fourGridTest1() {
-		Grid solutionGrid = new Grid("testfiles/4testfile1sol");
-		SudokuSolver solver = new SudokuSolver("testfiles/4testfile1");
-		solver.solve();
-		assertEquals(solutionGrid, solver.getGrid());
+		String testFile = "testfiles/4testfile1";
+		String solutionFile = "testfiles/4testfile1sol";
+		check(testFile, solutionFile);
 	}
 	
 	@Test
 	public void fourGridTest2() {
-		Grid solutionGrid = new Grid("testfiles/4testfile2sol");
-		SudokuSolver solver = new SudokuSolver("testfiles/4testfile2");
-		solver.solve();
-		assertEquals(solutionGrid, solver.getGrid());
+		String testFile = "testfiles/4testfile2";
+		String solutionFile = "testfiles/4testfile2sol";
+		check(testFile, solutionFile);
 	}
 	
 	@Test
 	public void fourGridTest3() {
-		Grid solutionGrid = new Grid("testfiles/4testfile3sol");
-		SudokuSolver solver = new SudokuSolver("testfiles/4testfile3");
-		solver.solve();
-		assertEquals(solutionGrid, solver.getGrid());
+		String testFile = "testfiles/4testfile3";
+		String solutionFile = "testfiles/4testfile3sol";
+		check(testFile, solutionFile);
 	}
 	
 	@Test
 	public void nineGridTest1() {
-		Grid solutionGrid = new Grid("testfiles/9testfile1sol");
-		SudokuSolver solver = new SudokuSolver("testfiles/9testfile1");
-		solver.solve();
-		assertEquals(solutionGrid, solver.getGrid());
+		String testFile = "testfiles/9testfile1";
+		String solutionFile = "testfiles/9testfile1sol";
+		check(testFile, solutionFile);
 	}
 	
 	@Test
 	public void nineGridTest2() {
-		Grid solutionGrid = new Grid("testfiles/9testfile2sol");
-		SudokuSolver solver = new SudokuSolver("testfiles/9testfile2");
-		solver.solve();
-		assertEquals(solutionGrid, solver.getGrid());
+		String testFile = "testfiles/9testfile2";
+		String solutionFile = "testfiles/9testfile2sol";
+		check(testFile, solutionFile);
 	}
 	
 	@Test
 	public void nineGridTest3() {
-		Grid solutionGrid = new Grid("testfiles/9testfile3sol");
-		SudokuSolver solver = new SudokuSolver("testfiles/9testfile3");
-		solver.solve();
-		assertEquals(solutionGrid, solver.getGrid());
+		String testFile = "testfiles/9testfile3";
+		String solutionFile = "testfiles/9testfile3sol";
+		check(testFile, solutionFile);
 	}
 	
 	@Test
 	public void sixteenGridTest1() {
-		Grid solutionGrid = new Grid("testfiles/16testfile1sol");
-		SudokuSolver solver = new SudokuSolver("testfiles/16testfile1");
-		solver.solve();
-		assertEquals(solutionGrid, solver.getGrid());
+		String testFile = "testfiles/16testfile1";
+		String solutionFile = "testfiles/16testfile1sol";
+		check(testFile, solutionFile);
 	}
 	
 	@Test
 	public void twentyFiveGridTest1() {
-		Grid solutionGrid = new Grid("testfiles/25testfile1sol");
-		SudokuSolver solver = new SudokuSolver("testfiles/25testfile1");
-		solver.solve();
-		assertEquals(solutionGrid, solver.getGrid());
+		String testFile = "testfiles/25testfile1";
+		String solutionFile = "testfiles/25testfile1sol";
+		check(testFile, solutionFile);
 	}
 	
 	@Test
@@ -126,6 +124,5 @@ public class SudokuSolverTests {
 		solver.solve();
 		assertTrue(solutionGrid.equals(solver.getGrid()));
 	}
-	
 
 }
