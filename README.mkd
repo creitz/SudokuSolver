@@ -1,8 +1,8 @@
 SudokuSolver
 =========================
 
-Simple command line utility and java components for solving 4-, or 9-, 16-[Sudoku][] puzzles.
-The solver is theoretically already capable of handling boards larger than 16, though it 
+Simple command line utility and java components for solving 4-, 9-, 16-, or 25-[Sudoku][] puzzles.
+The solver is theoretically already capable of handling boards larger than 25, though it 
 is untested.
 
 ## Downloading
@@ -56,6 +56,7 @@ file could containing the following:
 Or for a 16x16:
 
 ```
+16
 *  *  *  *  13 *  12 *  3  *  5  *  *  8  1  10
 1  *  15 4  9  *  16 14 13 12 *  *  6  *  *  3
 *  13 *  5  *  *  *  10 *  9  *  2  7  12 *  *
