@@ -78,7 +78,7 @@ Or for a 16x16:
 
 ## Using the Components
 
-To create a SudokuSolver object and solve a sudoku, you can do the following
+To create a SudokuSolver object and solve a sudoku, you can do the following:
 
 ```java
 	SudokuSolver solver = new SudokuSolver("filename");
