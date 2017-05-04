@@ -100,12 +100,11 @@ Alternatively, you can create a grid programmatically instead of with a file, li
 ```java
 Grid grid = new Grid(gridSize);
 for (int row = 0; row < gridSize; row++) {
-		for (int col = 0; col < gridSize; col++) {
-			if (squareShouldHaveAValue) {
-				grid.setValueAtCoords(row, col, someValue);
-			}
+	for (int col = 0; col < gridSize; col++) {
+		if (squareShouldHaveAValue) {
+			grid.setValueAtCoords(row, col, someValue);
 		}
-	} 
+	}
 }
 SudokuSolver solver = new SudokuSolver(grid);
 solver.solve();
